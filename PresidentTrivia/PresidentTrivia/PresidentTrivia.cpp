@@ -1,17 +1,30 @@
 // PresidentTrivia.cpp : Defines the entry point for the console application.
-//
 
 #include "stdafx.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-void results(int totalPoints);
+class Player {
+	int points;
+	string name;
+
+public:
+	Player(string alias);  //Player constructor
+	~Player();             //Player destructor  
+
+	int pointValue(int totalPoints) { return points = totalPoints; }; //inline function
+};
+
+void playerSetUp();
+void results(int totalPoints, int SIZE); 
 void presidentQuiz();
 void answerReveal(char *answer);
 
 int main()
 {
+	playerSetUp();
 	presidentQuiz();
 
 	cin.get();
@@ -19,14 +32,28 @@ int main()
 	return 0;
 }
 
-void results(int totalPoints)
+
+Player::Player(string alias) //Implement Player constructor
 {
-	cout << "You got " << totalPoints << " out of 10.";
+	name = alias;
+}
+
+Player::~Player() //Implement Player destructor
+{}
+
+int Player::pointValue(int totalPoints)
+{
+	return points = totalPoints;
+}
+
+void results(int totalPoints, int SIZE)
+{
+	cout << "You got " << totalPoints << " out of " << SIZE << " points.";
 }
 
 void presidentQuiz()
 {
-	const int SIZE = 10;
+	const int SIZE = 20;
 	char answer[SIZE];
 	int points = 0;
 
@@ -144,7 +171,117 @@ void presidentQuiz()
 	if (answer[9] == 'c' || answer[9] == 'C')
 		points++;
 
-	results(points);
+	cout << "11. In what war was Franklin Pierce a soldier?\n\n";
+	cout << "A. the Mexican War\n"; //correct
+	cout << "B. the War of 1812\n";
+	cout << "C. the Napoleonic Wars\n";
+	cout << "D. the French and Indian War\n";
+	cin >> answer[10];
+	cout << endl << endl;
+
+	if (answer[10] == 'a' || answer[10] == 'A')
+		points++;
+
+	cout << "12. What political party broke up during the 1850s?\n\n";
+	cout << "A. Democtratic Party\n";
+	cout << "B. Republican Party\n";
+	cout << "C. Federalist Party\n";
+	cout << "D. Whig Party\n"; //correct
+	cin >> answer[11];
+	cout << endl << endl;
+
+	if (answer[11] == 'd' || answer[11] == 'D')
+		points++;
+
+	cout << "13. James Buchanon served as a U.S. Ambassador for what two European nations?\n\n";
+	cout << "A. Spain and France\n";
+	cout << "B. Great Britain and Germany\n";
+	cout << "C. Great Britain and Russia\n"; //correct
+	cout << "D. France and Denmark\n";
+	cin >> answer[12];
+	cout << endl << endl;
+
+	if (answer[12] == 'c' || answer[12] == 'C')
+		points++;
+
+	cout << "14. What state did Abraham Lincoln serve as a memeber of the House of Representatives?\n\n";
+	cout << "A. Mississippi\n";
+	cout << "B. Illinois\n"; //correct
+	cout << "C. New Hampshire\n";
+	cout << "D. Virginia\n";
+	cin >> answer[13];
+	cout << endl << endl;
+
+	if (answer[13] == 'b' || answer[13] == 'B')
+		points++;
+
+	cout << "15. During Andrew Johnson's term, what piece of land did the U.S. purchase?\n\n";
+	cout << "A. Guam\n";
+	cout << "B. Alaska\n"; //correct 
+	cout << "C. Virgin Islands\n";
+	cout << "D. California\n";
+	cin >> answer[14];
+	cout << endl << endl;
+
+	if (answer[14] == 'b' || answer[14] == 'B')
+		points++;
+
+	cout << "16. What was not permitted in the White House when Rutherford B. Hayes was president?\n\n";
+	cout << "A. the press\n";
+	cout << "B. cigars or any kind of tobacco products\n";
+	cout << "C. drinking alcohol\n"; //correct
+	cout << "D. dogs or cats\n";
+	cin >> answer[15];
+	cout << endl << endl;
+
+	if (answer[15] == 'c' || answer[15] == 'C')
+		points++;
+
+	cout << "17. Who was Charles Guiteau?\n\n";
+	cout << "A. the assassin of James A. Garfield\n"; //correct
+	cout << "B. the man who purchased Alaska\n";
+	cout << "C. owner of the First Continental Railroad\n";
+	cout << "D. the Vice President to James A. Garfield\n";
+	cin >> answer[16];
+	cout << endl << endl;
+
+	if (answer[16] == 'a' || answer[16] == 'A')
+		points++;
+
+	cout << "18. What did Grover Cleveland believe should be the basis for U.S. money?\n\n";
+	cout << "A. paper, silver and gold\n";
+	cout << "B. silver and gold\n";
+	cout << "C. paper backed by gold\n";
+	cout << "D. gold only\n"; //correct
+	cin >> answer[17];
+	cout << endl << endl;
+
+	if (answer[17] == 'd' || answer[17] == 'D')
+		points++;
+
+	cout << "19. What was the name of the soldiers Theodore Roosevelt led in the Spanish-American War?\n\n";
+	cout << "A. Theodore's Musketeers\n";
+	cout << "B. Teddy's Titans\n";
+	cout << "C. Rough Riders\n"; //correct
+	cout << "D. Rangers of Roosevelt\n";
+	cin >> answer[18];
+	cout << endl << endl;
+
+	if (answer[18] == 'c' || answer[18] == 'C')
+		points++;
+
+	cout << "20. What university did Woodrow Wilson serve as both professor and president?\n\n";
+	cout << "A. Princeton\n"; //correct
+	cout << "B. Brown University\n";
+	cout << "C. Yale\n";
+	cout << "D. Harvard\n";
+	cin >> answer[19];
+	cout << endl << endl;
+
+	if (answer[19] == 'a' || answer[19] == 'A')
+		points++;
+
+	results(points, SIZE);
 	answerReveal(answer);
 }
 
@@ -158,7 +295,7 @@ void answerReveal(char *answer)
 	if (answer[1] == 'd' || answer[1] == 'D')
 		cout << "2. Correct\n";
 	else
-		cout << "2. John Adams belonged to the Federalist Party\n\n";
+		cout << "2. John Adams belonged to the Federalist Party.\n\n";
 
 	if (answer[2] == 'a' || answer[2] == 'A')
 		cout << "3. Correct\n";
@@ -177,7 +314,7 @@ void answerReveal(char *answer)
 		cout << "5. Correct\n";
 	else
 	{
-		cout << "James Monroe was against no opposition in the election of 1820. He received all electoral \n";
+		cout << "5. James Monroe was against no opposition in the election of 1820. He received all electoral \n";
 		cout << "votes except one.\n\n";
 	}
 
@@ -203,15 +340,95 @@ void answerReveal(char *answer)
 		cout << "9. Correct\n";
 	else
 	{
-		cout << "After John Tyler vetoed a bill to create a new Bank of the United States \n";
+		cout << "9. After John Tyler vetoed a bill to create a new Bank of the United States \n";
 		cout << "his entire cabinet resigned.\n\n";
 	}
-		
+
 	if (answer[9] == 'c' || answer[9] == 'C')
 		cout << "10. Correct\n";
 	else
 	{
-		cout << "The Know-Nothing Party, which President Millard Fillmore belonged to, strongly supported \n";
+		cout << "10. The Know-Nothing Party, which President Millard Fillmore belonged to, strongly supported \n";
 		cout << "unrestricted immigration.\n\n";
 	}
+
+	if (answer[10] == 'a' || answer[10] == 'A')
+		cout << "11. Correct\n";
+	else
+	{
+		cout << "11. Franklin Pierce was a soldier in the Mexican War.\n\n";
+	}
+
+	if (answer[11] == 'd' || answer[11] == 'D')
+		cout << "12. Correct\n";
+
+	else
+	{
+		cout << "12. The Whig party broke up in the 1850s.\n\n";
+	}
+
+	if (answer[12] == 'c' || answer[12] == 'C')
+		cout << "13. Correct\n";
+
+	else
+	{
+		cout << "13. James Buchanon served as a U.S. Ambassador to Great Britain and Russia.\n\n";
+	}
+
+	if (answer[13] == 'b' || answer[13] == 'B')
+		cout << "14. Correct\n";
+
+	else
+	{
+		cout << "14. Abraham Lincoln served in the House of Representatives for Illinois.\n\n";
+	}
+
+	if (answer[14] == 'b' || answer[14] == 'B')
+		cout << "15. Correct\n";
+
+	else
+	{
+		cout << "15. During Andrew Johnson's term, the U.S. purchased Alaska.\n\n";
+	}
+
+	if (answer[15] == 'c' || answer[15] == 'C')
+		cout << "16. Correct\n";
+
+	else
+	{
+		cout << "16. Rutherford B. Hayes prohibited drkinking alcohol in the White House.\n\n";
+	}
+
+	if (answer[16] == 'a' || answer[16] == 'A')
+		cout << "17. Correct\n";
+
+	else
+	{
+		cout << "17. Charles Guiteau assassinated James Garfield.\n\n";
+	}
+
+	if (answer[17] == 'd' || answer[17] == 'D')
+		cout << "18. Correct\n";
+
+	else
+	{
+		cout << "Grover Cleveland believed that only gold should be the basis for U.S. money.\n\n";
+	}
+
+	if (answer[18] == 'c' || answer[18] == 'C')
+		cout << "19. Correct\n";
+
+	else
+	{
+		cout << "19. Theodore's soldiers in the Spanish-American War were called the Rough Riders.\n\n";
+	}
+    
+	if (answer[19] == 'a' || answer[19] == 'A')
+		cout << "20. Correct\n";
+
+	else
+	{
+		cout << "Woodrow Wilson was a professor and president of Princeton.\n\n";
+	}
+
 }
